@@ -4,6 +4,10 @@
     "name": "safe", 
     "age": "20", 
     "gender": "male", 
-    "department": "CPE"
+    "department": "CPE",
+    "scripts": {
+      "serve":"node app.js"
+    }
+    
 }
 

@@ -4,8 +4,9 @@ const request = require("request-promise");
 const EXTERNAL_API=""; // put url
 const accessToken=""; // put access token
 const student = {
-  name: '', // replace with your full name.
-  age: 19, // put your age.
+  student_id: '63364659', // replace with your full name.
+  name: 'Phattraphon Soitha',
+  age: 20, // put your age.
   gender: '', // replace with your gender
   department: 'CPE'
 };

@@ -45,6 +45,15 @@
           <div id="myDynamicTable"></div>
         </div>
         <div id="tabs-3">
+          <form id="my-login">
+            <input type="text" id="txtStudent_ID" name="txtStudent-ID" placeholder="student_id" />
+            <br/><br>
+            <input type="password" id="txtPassword-ID" name="txtPassword_ID" placeholder="password" />
+            <br/><br>
+            
+            <a href="http://localhost:3000/student/" target="_blank"><input type="button" id="btnLogin" value="Login"/>
+            
+        </form>
         
         </div>
     </div><!-- tabs-->
@@ -67,6 +76,7 @@ $.ajax({
   headers: { 
     'Content-Type': 'application/json',
     "Accepts": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjcyMTU1LCJleHAiOjE2NTkyNzU3NTUsIm5iZiI6MTY1OTI3MjE1NSwianRpIjoiM2l2UlhqSnJ0OEZrZG5sbiIsInN1YiI6MTIzLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-OxInRRHlbd0mjYxTYwoaII_36v4JbJO9uPWn95SA20",
   },
   data:JSON.stringify( { "name": $('#txtName').val(), "student_id": $('#txtStudentID').val(), "email": $('#txtEmail').val(), "password": $('#txtPassword').val() } ),
   success: function(data){
@@ -87,6 +97,7 @@ $.ajax({
                 console.log("tabs-2");
             }else if(tabIndex == 2){
                 console.log("tabs-3");
+            }else if(tabIndex == 3){
             }
          }
      });
@@ -101,7 +112,7 @@ $.ajax({
          headers: { 
            'Content-Type': 'application/json',
            "Accepts": "application/json",
-           "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MTc4MTQ4LCJleHAiOjE2NTkxODE3NDgsIm5iZiI6MTY1OTE3ODE0OCwianRpIjoiRGNmOHF4NDE0U2lQbUpDayIsInN1YiI6OTUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.pOo10l9mYWnLnGN7lK4BxkrW4Vmw486FNOtOzCzp_zA ",
+           "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjcyMTU1LCJleHAiOjE2NTkyNzU3NTUsIm5iZiI6MTY1OTI3MjE1NSwianRpIjoiM2l2UlhqSnJ0OEZrZG5sbiIsInN1YiI6MTIzLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-OxInRRHlbd0mjYxTYwoaII_36v4JbJO9uPWn95SA20",
          },
          success: function(data){
            console.log(data);

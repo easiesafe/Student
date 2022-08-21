@@ -8,6 +8,9 @@
 - ## 💻 Skill: 
 <p align="left">
 <a href="#">
+    <img class="rounded-t-lg" src="image/Dinoo.png" alt="">
+    <a>
+<a href="#">
     <img src="svg/dev/frameworks/laravel.svg" alt="laravel" style="vertical-align:top; margin:6px 4px">
   </a>  
 

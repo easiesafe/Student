@@ -8,6 +8,8 @@
 
 <!--CSS-->
 <link rel="stylesheet" href="/jquery-ui/themes/base/jquery-ui.css">
+<!--Tailwind CSS-->
+<link rel="stylesheet" href="/jquery-ui/style.css"/>
 
 <!--Javascript-->
 <script src="/jquery/jquery.min.js"></script>
@@ -25,6 +27,7 @@
           <li><a href="#tabs-1">1-แบบฟอร์มลงทะเบียน</a></li>
           <li><a href="#tabs-2">2-รายชื่อนิสิต(ALL)</a></li>
           <li><a href="#tabs-3">3-ข้อมูลนิสิต</a></li>
+          <li><a href="#tabs-4">4-เข้าสู่ระบบ</a></li>
         </ul>
         <div id="tabs-1">
           <form id="my-form">
@@ -44,16 +47,36 @@
           <button class="ui-button ui-widget ui-corner-all" id="btnRequest">Load</button>
           <div id="myDynamicTable"></div>
         </div>
+
+
         <div id="tabs-3">
-          <form id="my-login">
-            <input type="text" id="txtStudent_ID" name="txtStudent-ID" placeholder="student_id" />
-            <br/><br>
-            <input type="password" id="txtPassword-ID" name="txtPassword_ID" placeholder="password" />
-            <br/><br>
+          <div class="flex justify-center">
+            <div class="rounded-lg shadow-lg bg-white max-w-sm">
+              <a href="#!">
+                <img class="rounded-t-lg" src="images/pednoi.png" alt=""/>
+              </a>
+              <div class="p-6">
+                <h5 class="text-gray-900 text-xl font-medium mb-2">I'm pancake</h5>
+                <p class="text-gray-700 text-base mb-4">
+                  Zzz.Zzz 
+                </p>
+                <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
             
-            <a href="http://localhost:3000/student/" target="_blank"><input type="button" id="btnLogin" value="Login"/>
+
+        <div id="tabs-4">
+              <br>
+              <input type="text" id="txtStudent_ID" name="txtStudent_ID" placeholder="student_id" />
+              <br/><br>
+              <input type="password" id="txtPassword_ID" name="txtPassword_ID" placeholder="password_id" />
+              <br/><br>
+              <input type="button" id="btnLogin" value="Login"/>
             
-        </form>
+        
         
         </div>
     </div><!-- tabs-->
@@ -65,10 +88,11 @@
 <script type="text/javascript">
   $(document).ready(function () {
      console.log("Onload");
-
-//btnSubmit
-$('#btnSubmit').click( function(){
-//console.log("Submit");
+     
+//btnLogin
+$('#btnLogin').click( function(){
+//alert("Login");
+console.log("Login");
 $.ajax({
   method: "POST",
   url: "https://tools.ecpe.nu.ac.th/network/api/register",
@@ -76,9 +100,32 @@ $.ajax({
   headers: { 
     'Content-Type': 'application/json',
     "Accepts": "application/json",
-    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjcyMTU1LCJleHAiOjE2NTkyNzU3NTUsIm5iZiI6MTY1OTI3MjE1NSwianRpIjoiM2l2UlhqSnJ0OEZrZG5sbiIsInN1YiI6MTIzLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-OxInRRHlbd0mjYxTYwoaII_36v4JbJO9uPWn95SA20",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5NzczNjQzLCJleHAiOjE2NTk3NzcyNDMsIm5iZiI6MTY1OTc3MzY0MywianRpIjoiSXg2R2R3OUpuOVU2MmpXViIsInN1YiI6MTM2LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.kEk5YcY4af7tT0C18XBnOKdyJF0bSf7Qeyf3S3GXAII",
   },
-  data:JSON.stringify( { "name": $('#txtName').val(), "student_id": $('#txtStudentID').val(), "email": $('#txtEmail').val(), "password": $('#txtPassword').val() } ),
+  data:JSON.stringify( { "name": $('#txtName').val(),"student_id": $('#txtStudent_ID').val(), "student_id": $('#txtStudentID').val(), "email": $('#txtEmail').val(), "password": $('#txtPassword').val(), "password id": $('#txtPassword_ID').val() } ),
+  success: function(data){
+    alert("Login");
+    //console.log(data);
+   
+  }
+});
+
+    });
+
+
+//btnSubmit
+$('#btnSubmit').click( function(){
+console.log("Submit");
+$.ajax({
+  method: "POST",
+  url: "https://tools.ecpe.nu.ac.th/network/api/register",
+  dataType : 'json',
+  headers: { 
+    'Content-Type': 'application/json',
+    "Accepts": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5NzczNjQzLCJleHAiOjE2NTk3NzcyNDMsIm5iZiI6MTY1OTc3MzY0MywianRpIjoiSXg2R2R3OUpuOVU2MmpXViIsInN1YiI6MTM2LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.kEk5YcY4af7tT0C18XBnOKdyJF0bSf7Qeyf3S3GXAII",
+  },
+  data:JSON.stringify( { "name": $('#txtName').val(),"student_id": $('#txtStudent_ID').val(), "student_id": $('#txtStudentID').val(), "email": $('#txtEmail').val(), "password": $('#txtPassword').val(), "password id": $('#txtPassword_ID').val() } ),
   success: function(data){
     console.log(data);
    
@@ -98,6 +145,8 @@ $.ajax({
             }else if(tabIndex == 2){
                 console.log("tabs-3");
             }else if(tabIndex == 3){
+              console.log("tabs-4");
+            }else if(tabIndex == 4){
             }
          }
      });
@@ -112,7 +161,7 @@ $.ajax({
          headers: { 
            'Content-Type': 'application/json',
            "Accepts": "application/json",
-           "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjcyMTU1LCJleHAiOjE2NTkyNzU3NTUsIm5iZiI6MTY1OTI3MjE1NSwianRpIjoiM2l2UlhqSnJ0OEZrZG5sbiIsInN1YiI6MTIzLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-OxInRRHlbd0mjYxTYwoaII_36v4JbJO9uPWn95SA20",
+           "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5NzczNjQzLCJleHAiOjE2NTk3NzcyNDMsIm5iZiI6MTY1OTc3MzY0MywianRpIjoiSXg2R2R3OUpuOVU2MmpXViIsInN1YiI6MTM2LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.kEk5YcY4af7tT0C18XBnOKdyJF0bSf7Qeyf3S3GXAII",
          },
          success: function(data){
            console.log(data);

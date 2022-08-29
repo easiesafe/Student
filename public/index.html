@@ -53,7 +53,7 @@
           <div class="flex justify-center">
             <div class="rounded-lg shadow-lg bg-white max-w-sm">
               <a href="#!">
-                <img class="rounded-t-lg" src="images/pednoi.png" alt=""/>
+                <img class="rounded-t-lg" src="images/Dinoo.png" alt=""/>
               </a>
               <div class="p-6">
                 <h5 class="text-gray-900 text-xl font-medium mb-2" id="name-info"></h5>
@@ -72,9 +72,9 @@
 
         <div id="tabs-4">
               <br>
-              <input type="text" id="txtStudent_ID" name="txtStudent_ID" placeholder="student_id" />
+              <input type="text" id="txtEmail" name="txtEmail" placeholder="email" />
               <br/><br>
-              <input type="password" id="txtPassword_ID" name="txtPassword_ID" placeholder="password_id" />
+              <input type="password" id="txtPassword" name="txtPassword" placeholder="password" />
               <br/><br>
               <input type="button" id="btnLogin" value="Login"/>
             
@@ -88,7 +88,7 @@
 
 
 <script type="text/javascript">
-    const accessToken = JSON.parse(localStorage.getItem('srcToken'));
+    
 
 
   $(document).ready(function () {
@@ -125,21 +125,21 @@
 // //btnLogin
 $('#btnLogin').click( function(){
 //alert("Login");
-console.log("Login");
+//console.log("Login");
 $.ajax({
   method: "POST",
-  url: "https://tools.ecpe.nu.ac.th/network/api/register",
+  url: "https://tools.ecpe.nu.ac.th/network/api/login",
   dataType : 'json',
   headers: { 
     'Content-Type': 'application/json',
     "Accepts": "application/json",
-    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzYxNTAyLCJleHAiOjE2NjE3NjUxMDIsIm5iZiI6MTY2MTc2MTUwMiwianRpIjoiZ1VadExzZHNxUXd5RUdGaiIsInN1YiI6MTQ3LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.1I96SF5ojPrA04jgwgQupVq13atlMMhctl6zYCAaXLg",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzY3MDEwLCJleHAiOjE2NjE3NzA2MTAsIm5iZiI6MTY2MTc2NzAxMCwianRpIjoiY1pQanRuQTZTZlN6N0k2TyIsInN1YiI6MTUwLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.y3QtTh6qrWkmuzjhejh3yHdtLL9TQ1faKxRIP6q5aYY",
   },
-  data:JSON.stringify( { "name": $('#txtName').val(),"student_id": $('#txtStudent_ID').val(), "student_id": $('#txtStudentID').val(), "email": $('#txtEmail').val(), "password": $('#txtPassword').val(), "password id": $('#txtPassword_ID').val() } ),
+  data:JSON.stringify( {"email": $('#txtEmail').val(), "password": $('#txtPassword').val() } ),
   success: function(data){
-    alert("Login");
-    //console.log(data);
-    
+    //alert(data);
+    console.log(data);
+    //localStorage.setItem('srcToken',JSON.stringify(data.token))
    
   }
 });
@@ -159,7 +159,7 @@ $.ajax({
     "Accepts": "application/json",
     
   },
-  data:JSON.stringify( { "name": $('#txtName').val(),"student_id": $('#txtStudent_ID').val(), "student_id": $('#txtStudentID').val(), "email": $('#txtEmail').val(), "password": $('#txtPassword').val(), "password id": $('#txtPassword_ID').val() } ),
+  data:JSON.stringify( { "name": $('#txtName').val(), "student_id": $('#txtStudentID').val(), "email": $('#txtEmail').val(), "password": $('#txtPassword').val() } ),
   success: function(data){
     console.log(data);
    
@@ -186,6 +186,7 @@ $.ajax({
      });
 
      //btnRequest
+    //var accessToken = JSON.parse(localStorage.getItem('srcToken'));
      $('#btnRequest').click( function(){
        // url from where we want to get the data
        $.ajax({
@@ -195,12 +196,14 @@ $.ajax({
          headers: { 
            'Content-Type': 'application/json',
            "Accepts": "application/json",
-           "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzYxNTAyLCJleHAiOjE2NjE3NjUxMDIsIm5iZiI6MTY2MTc2MTUwMiwianRpIjoiZ1VadExzZHNxUXd5RUdGaiIsInN1YiI6MTQ3LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.1I96SF5ojPrA04jgwgQupVq13atlMMhctl6zYCAaXLg",
+           "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzY3MDEwLCJleHAiOjE2NjE3NzA2MTAsIm5iZiI6MTY2MTc2NzAxMCwianRpIjoiY1pQanRuQTZTZlN6N0k2TyIsInN1YiI6MTUwLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.y3QtTh6qrWkmuzjhejh3yHdtLL9TQ1faKxRIP6q5aYY`,
          },
          success: function(data){
+          //alert(accessToken)
            console.log(data);
            var tbName ="myDynamicTable";
            addTable(data,tbName);
+
 
            //alert("Done");
          }
@@ -335,7 +338,7 @@ var TableBackgroundMouseoverColor = "#b8663d";
        // elementButtonSave.setAttribute("style","width:50px;");
         //elementButtonSave.setAttribute("class","tealA400");
         
-        //<input type="button" onclick="location.href='https://www.instagram.com/easiesafe____/'" value="Me" />
+        
         elementButtonSave.setAttribute("onclick","studentInfo('"+items[i].student_id+"',this)");
         
 
@@ -359,7 +362,8 @@ var TableBackgroundMouseoverColor = "#b8663d";
                headers: { 
                  'Content-Type': 'application/json',
                  "Accepts": "application/json",
-                 "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzYxNTAyLCJleHAiOjE2NjE3NjUxMDIsIm5iZiI6MTY2MTc2MTUwMiwianRpIjoiZ1VadExzZHNxUXd5RUdGaiIsInN1YiI6MTQ3LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.1I96SF5ojPrA04jgwgQupVq13atlMMhctl6zYCAaXLg`,
+                 "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzY3MDEwLCJleHAiOjE2NjE3NzA2MTAsIm5iZiI6MTY2MTc2NzAxMCwianRpIjoiY1pQanRuQTZTZlN6N0k2TyIsInN1YiI6MTUwLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.y3QtTh6qrWkmuzjhejh3yHdtLL9TQ1faKxRIP6q5aYY`,
+                 //"Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzYxNTAyLCJleHAiOjE2NjE3NjUxMDIsIm5iZiI6MTY2MTc2MTUwMiwianRpIjoiZ1VadExzZHNxUXd5RUdGaiIsInN1YiI6MTQ3LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.1I96SF5ojPrA04jgwgQupVq13atlMMhctl6zYCAaXLg`,
                },
                success: function(data){
                  console.log(data);

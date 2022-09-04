@@ -3,7 +3,7 @@
 - ## 😄 My name is: Phattarphon Soitha
 - ## ⚡ Student id: 63364659
 - ## 🔭 I'm currently studying on Faculty of Engineering.
-- ## 👨🏻‍💻 Career interest: software developer
+- ## 👨🏻‍💻 Career interest: web/app developer
 - ## 👨🏻‍🏫 Favorite subject: Introduction to Digital Design
 - ## 💻 Skill: 
 <p align="left">
